@@ -1,0 +1,193 @@
+﻿@using RecursosHumanos.Models
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<section class="relative isolate min-h-72 overflow-hidden lg:min-h-80">
+    <img src="~/img/campus-hero.jpg" alt="Jardines del campus UDLAP" class="absolute inset-0 h-full w-full object-cover object-center" asp-append-version="true" />
+    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/92 to-white/25"></div>
+    <div class="relative max-w-2xl px-6 py-16 lg:px-10 lg:py-20">
+        <h1 class="text-5xl font-semibold tracking-tight text-neutral-900 lg:text-6xl">Recursos Humanos</h1>
+        <p class="mt-4 text-xl text-neutral-700">Tu aliado en la vida laboral en la UDLAP</p>
+        <p class="mt-4 max-w-lg text-neutral-600">Aquí encontrarás información, trámites y servicios para apoyarte durante tu trayectoria en la universidad.</p>
+    </div>
+</section>
+
+<section class="border-b border-neutral-100 bg-white px-6 py-6 lg:px-10" aria-label="Buscar en Recursos Humanos">
+    <div class="max-w-3xl">
+        @await Html.PartialAsync("_Buscador", new BuscadorFormulario
+        {
+            InputId = "inicio-busqueda",
+            Placeholder = "Buscar trámites, prestaciones o temas...",
+            InputClass = "w-full rounded-xl border border-neutral-200 bg-neutral-50 py-3 pr-4 pl-12 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-udlap-naranja focus:bg-white focus:ring-1 focus:ring-udlap-naranja focus:outline-none",
+            IconClass = "left-4 h-5 w-5",
+        })
+    </div>
+</section>
+
+<section class="px-6 py-14 lg:px-10" aria-labelledby="tramites-titulo">
+    <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+        <div>
+            <h2 id="tramites-titulo" class="text-3xl font-semibold tracking-tight text-neutral-900">¿Qué necesitas hacer?</h2>
+            <p class="mt-2 text-neutral-500">Accede rápidamente a los trámites y servicios más consultados.</p>
+        </div>
+        <a href="@Rutas.Tramites" class="text-sm font-medium text-udlap-naranja hover:text-udlap-naranja-oscuro">Ver todos los trámites y servicios →</a>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+        <a href="@Rutas.Vacaciones" class="group rounded-2xl bg-udlap-ambar/5 p-5 text-neutral-800 hover:bg-udlap-ambar/10 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-udlap-ambar">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3M5 11h14M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" />
+                </svg>
+            </span>
+            <h3 class="mt-4 font-semibold">Vacaciones</h3>
+            <p class="mt-2 text-sm leading-relaxed text-neutral-600">Consulta el proceso, requisitos y accede al sistema.</p>
+            <p class="mt-4 text-sm font-medium text-udlap-ambar group-hover:underline">Ir al trámite →</p>
+        </a>
+        <a href="@Rutas.Constancias" class="group rounded-2xl bg-udlap-turquesa/5 p-5 text-neutral-800 hover:bg-udlap-turquesa/10 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-udlap-turquesa">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6M7 4h10a2 2 0 0 1 2 2v14l-4-2-3 2-3-2-4 2V6a2 2 0 0 1 2-2z" />
+                </svg>
+            </span>
+            <h3 class="mt-4 font-semibold">Constancias</h3>
+            <p class="mt-2 text-sm leading-relaxed text-neutral-600">Genera tu constancia a través del sistema institucional.</p>
+            <p class="mt-4 text-sm font-medium text-udlap-turquesa group-hover:underline">Ir al trámite →</p>
+        </a>
+        <a href="@Rutas.Seguros" class="group rounded-2xl bg-udlap-rojo/5 p-5 text-neutral-800 hover:bg-udlap-rojo/10 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-udlap-rojo">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3l7 3v6c0 5-3.5 7.8-7 9-3.5-1.2-7-4-7-9V6l7-3z" />
+                </svg>
+            </span>
+            <h3 class="mt-4 font-semibold">Seguros</h3>
+            <p class="mt-2 text-sm leading-relaxed text-neutral-600">Conoce los seguros a los que tienes acceso y cómo utilizarlos.</p>
+            <p class="mt-4 text-sm font-medium text-udlap-rojo group-hover:underline">Ir al trámite →</p>
+        </a>
+        <a href="@Rutas.FondoAhorro" class="group rounded-2xl bg-udlap-oliva/5 p-5 text-neutral-800 hover:bg-udlap-oliva/10 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-udlap-oliva">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-2.2 0-4 1.3-4 3s1.8 3 4 3 4 1.3 4 3-1.8 3-4 3m0-12V5m0 14v-2" />
+                </svg>
+            </span>
+            <h3 class="mt-4 font-semibold">Fondo de ahorro</h3>
+            <p class="mt-2 text-sm leading-relaxed text-neutral-600">Consulta tu saldo, solicita un préstamo y revisa los requisitos.</p>
+            <p class="mt-4 text-sm font-medium text-neutral-700 group-hover:underline">Ir al trámite →</p>
+        </a>
+        <a href="@Rutas.Recibos" class="group rounded-2xl bg-udlap-morado/5 p-5 text-neutral-800 hover:bg-udlap-morado/10 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-udlap-morado">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M6 7V5h12v2M6 7l1.2 12h9.6L18 7M10 11v5m4-5v5" />
+                </svg>
+            </span>
+            <h3 class="mt-4 font-semibold">Recibos de nómina</h3>
+            <p class="mt-2 text-sm leading-relaxed text-neutral-600">Consulta y descarga tus recibos de nómina.</p>
+            <p class="mt-4 text-sm font-medium text-udlap-morado group-hover:underline">Ir al trámite →</p>
+        </a>
+    </div>
+</section>
+
+<section class="px-6 py-14 lg:px-10" aria-labelledby="fechas-titulo">
+    <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
+        <h2 id="fechas-titulo" class="flex items-center gap-2 text-xl font-semibold text-neutral-900">
+            <svg class="h-5 w-5 text-udlap-naranja" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3M5 11h14M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" />
+            </svg>
+            Fechas importantes
+        </h2>
+        <a href="@Rutas.Fechas" class="text-sm font-medium text-udlap-naranja hover:text-udlap-naranja-oscuro">Ver el calendario completo →</a>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <article class="rounded-2xl bg-neutral-50 p-5">
+            <p class="text-4xl font-semibold tracking-tight text-neutral-900">25 <span class="text-base font-medium text-udlap-naranja">SEP</span></p>
+            <h3 class="mt-3 font-medium text-neutral-900">Periodo de solicitud de vacaciones</h3>
+            <p class="mt-2 text-sm text-neutral-600">Ya se encuentra abierto el periodo de vacaciones de fin de año.</p>
+            <a href="@Rutas.Fechas" class="mt-3 inline-block text-sm font-medium text-udlap-naranja hover:underline">Ver detalles →</a>
+        </article>
+        <article class="rounded-2xl bg-neutral-50 p-5">
+            <p class="text-4xl font-semibold tracking-tight text-neutral-900">15 <span class="text-base font-medium text-udlap-naranja">OCT</span></p>
+            <h3 class="mt-3 font-medium text-neutral-900">Inicio de inscripción a cursos de capacitación</h3>
+            <p class="mt-2 text-sm text-neutral-600">Periodo de inscripción a cursos de capacitación.</p>
+            <a href="@Rutas.Capacitacion" class="mt-3 inline-block text-sm font-medium text-udlap-naranja hover:underline">Ver detalles →</a>
+        </article>
+        <article class="rounded-2xl bg-neutral-50 p-5">
+            <p class="text-4xl font-semibold tracking-tight text-neutral-900">30 <span class="text-base font-medium text-udlap-naranja">OCT</span></p>
+            <h3 class="mt-3 font-medium text-neutral-900">Fecha límite de entrega de solicitudes</h3>
+            <p class="mt-2 text-sm text-neutral-600">Entrega de solicitudes de apoyo para dependientes económicos.</p>
+            <a href="@Rutas.Apoyos" class="mt-3 inline-block text-sm font-medium text-udlap-naranja hover:underline">Ver detalles →</a>
+        </article>
+        <article class="rounded-2xl bg-neutral-50 p-5">
+            <p class="text-4xl font-semibold tracking-tight text-neutral-900">31 <span class="text-base font-medium text-udlap-naranja">OCT</span></p>
+            <h3 class="mt-3 font-medium text-neutral-900">Fecha límite de registro de comprobantes</h3>
+            <p class="mt-2 text-sm text-neutral-600">Registro de comprobantes para fondo de ahorro.</p>
+            <a href="@Rutas.FondoAhorro" class="mt-3 inline-block text-sm font-medium text-udlap-naranja hover:underline">Ver detalles →</a>
+        </article>
+    </div>
+</section>
+
+<section class="px-6 pb-14 lg:px-10" aria-labelledby="temas-titulo">
+    <h2 id="temas-titulo" class="text-3xl font-semibold tracking-tight text-neutral-900">Explora más temas</h2>
+    <p class="mt-2 mb-10 text-neutral-500">Encuentra información organizada por categoría.</p>
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <a href="@Rutas.Tramites" class="group rounded-2xl bg-udlap-turquesa/5 p-5 text-neutral-800 hover:bg-udlap-turquesa/10 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-udlap-turquesa">
+                <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6M7 4h10a2 2 0 0 1 2 2v14l-4-2-3 2-3-2-4 2V6a2 2 0 0 1 2-2z" />
+                </svg>
+            </span>
+            <h3 class="mt-3 font-semibold">Trámites y servicios</h3>
+            <p class="mt-2 text-sm text-neutral-600">Constancias, vacaciones, permisos, documentos laborales y más.</p>
+            <p class="mt-3 text-sm font-medium text-udlap-turquesa group-hover:underline">Ver sección →</p>
+        </a>
+        <a href="@Rutas.Nomina" class="group rounded-2xl bg-udlap-ambar/5 p-5 text-neutral-800 hover:bg-udlap-ambar/10 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-udlap-ambar">
+                <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 10h16M6 10V7h12v3M6 10l1 9h10l1-9" />
+                </svg>
+            </span>
+            <h3 class="mt-3 font-semibold">Nómina, prestaciones y beneficios</h3>
+            <p class="mt-2 text-sm text-neutral-600">Recibos, fondo de ahorro, seguros, vales de despensa y más.</p>
+            <p class="mt-3 text-sm font-medium text-udlap-ambar group-hover:underline">Ver sección →</p>
+        </a>
+        <a href="@Rutas.Contratacion" class="group rounded-2xl bg-udlap-morado/5 p-5 text-neutral-800 hover:bg-udlap-morado/10 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-udlap-morado">
+                <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11a3 3 0 1 0-6 0 3 3 0 0 0 6 0ZM8 20v-1a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v1M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                </svg>
+            </span>
+            <h3 class="mt-3 font-semibold">Contratación y movimientos de personal</h3>
+            <p class="mt-2 text-sm text-neutral-600">Procesos de contratación, asignación de cursos y movimientos.</p>
+            <p class="mt-3 text-sm font-medium text-udlap-morado group-hover:underline">Ver sección →</p>
+        </a>
+        <a href="@Rutas.Desarrollo" class="group rounded-2xl bg-udlap-oliva/5 p-5 text-neutral-800 hover:bg-udlap-oliva/10 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-neutral-700">
+                <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3l8 4v2c0 5-3.6 8-8 10C7.6 17 4 14 4 9V7l8-4Z" />
+                </svg>
+            </span>
+            <h3 class="mt-3 font-semibold">Desarrollo y vida laboral</h3>
+            <p class="mt-2 text-sm text-neutral-600">Capacitación, programa académico, desarrollo profesional y más.</p>
+            <p class="mt-3 text-sm font-medium text-neutral-700 group-hover:underline">Ver sección →</p>
+        </a>
+        <a href="@Rutas.Recursos" class="group rounded-2xl bg-udlap-rojo/5 p-5 text-neutral-800 hover:bg-udlap-rojo/10 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-udlap-rojo">
+                <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 20V8l8-4 8 4v12H4Zm4-2h8v-6H8v6Z" />
+                </svg>
+            </span>
+            <h3 class="mt-3 font-semibold">Recursos</h3>
+            <p class="mt-2 text-sm text-neutral-600">Formatos, calendarios, guías, políticas y sistemas de RH.</p>
+            <p class="mt-3 text-sm font-medium text-udlap-rojo group-hover:underline">Ver sección →</p>
+        </a>
+        <a href="@Rutas.Preseas" class="group rounded-2xl bg-udlap-amarillo/15 p-5 text-neutral-800 hover:bg-udlap-amarillo/25 hover:text-neutral-800">
+            <span class="flex h-10 w-10 items-center text-neutral-800">
+                <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3l2.2 4.6L19 8.2l-3.5 3.4.8 4.9L12 14.8 7.7 16.5l.8-4.9L5 8.2l4.8-.6L12 3Z" />
+                </svg>
+            </span>
+            <h3 class="mt-3 font-semibold">Entrega de PRESEAS</h3>
+            <p class="mt-2 text-sm text-neutral-600">Ceremonia de reconocimiento a la trayectoria del personal.</p>
+            <p class="mt-3 text-sm font-medium text-neutral-800 group-hover:underline">Ver sección →</p>
+        </a>
+    </div>
+</section>

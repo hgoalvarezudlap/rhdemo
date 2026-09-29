@@ -1,0 +1,27 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<article class="mx-auto max-w-3xl px-6 py-14 lg:px-10">
+    <h1 class="text-3xl font-semibold text-red-600">Error.</h1>
+    <h2 class="mt-2 text-xl text-red-600">Ocurrió un problema al procesar la solicitud.</h2>
+
+    @if (Model.ShowRequestId)
+    {
+        <p class="mt-4 text-neutral-700">
+            <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        </p>
+    }
+
+    <h3 class="mt-6 text-lg font-semibold text-neutral-900">Modo Development</h3>
+    <p class="mt-2 text-neutral-600">
+        Al cambiar al entorno <strong>Development</strong> se mostrará información más detallada del error.
+    </p>
+    <p class="mt-2 text-neutral-600">
+        <strong>El entorno Development no debe habilitarse en aplicaciones publicadas.</strong>
+        Puede exponer información sensible de las excepciones.
+        Para depuración local, establece la variable <strong>ASPNETCORE_ENVIRONMENT</strong> en <strong>Development</strong>
+        y reinicia la aplicación.
+    </p>
+</article>

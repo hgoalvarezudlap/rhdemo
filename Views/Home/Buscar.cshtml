@@ -1,0 +1,35 @@
+@model BusquedaViewModel
+@{
+    ViewData["Title"] = Model.Encabezado.Titulo;
+}
+
+<article class="px-6 py-10 lg:px-10">
+    @await Html.PartialAsync("_EncabezadoPagina", Model.Encabezado)
+
+    <div class="mt-8 max-w-3xl">
+        @await Html.PartialAsync("_Buscador", new BuscadorFormulario
+        {
+            InputId = "buscar-pagina",
+            Valor = Model.Consulta,
+            Placeholder = "Buscar trámites, prestaciones o personas...",
+            InputClass = "w-full rounded-xl border border-neutral-200 bg-neutral-50 py-3 pr-4 pl-12 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-udlap-naranja focus:bg-white focus:ring-1 focus:ring-udlap-naranja focus:outline-none",
+            IconClass = "left-4 h-5 w-5",
+        })
+    </div>
+
+    @if (Model.Consulta.Length > 0 && Model.Resultados.Count > 0)
+    {
+        <ul class="mt-10 max-w-3xl divide-y divide-neutral-100">
+            @foreach (var resultado in Model.Resultados)
+            {
+                <li>
+                    <a href="@resultado.Url" class="block rounded-xl px-3 py-4 text-neutral-800 hover:bg-orange-50 hover:text-neutral-800">
+                        <p class="text-xs font-semibold tracking-wide text-udlap-naranja uppercase">@(resultado.Tipo == "contacto" ? "Contacto" : resultado.Seccion)</p>
+                        <h2 class="mt-1 text-lg font-semibold text-neutral-900">@resultado.Titulo</h2>
+                        <p class="mt-1 text-sm text-neutral-600">@resultado.Resumen</p>
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+</article>

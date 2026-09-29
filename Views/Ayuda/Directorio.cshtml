@@ -1,0 +1,101 @@
+@model DirectorioViewModel
+@{
+    ViewData["Title"] = Model.Encabezado.Titulo;
+    ViewData["OcultarContactoFooter"] = true;
+}
+
+<article class="px-6 py-10 lg:px-10">
+    @await Html.PartialAsync("_EncabezadoPagina", Model.Encabezado)
+
+    <div class="mt-8">
+        <div class="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <a href="tel:+522222292000" class="rounded-2xl bg-orange-50 p-4 text-neutral-800 hover:text-neutral-800">
+                <p class="text-xs font-semibold tracking-wide text-udlap-naranja uppercase">Teléfono</p>
+                <p class="mt-1 font-semibold whitespace-nowrap">(222) 229 2000</p>
+                <p class="mt-1 text-sm text-neutral-600">ext 2320 y 2324</p>
+            </a>
+            <a href="mailto:recursos.humanos@udlap.mx" class="rounded-2xl bg-orange-50 p-4 text-neutral-800 hover:text-neutral-800">
+                <p class="text-xs font-semibold tracking-wide text-udlap-naranja uppercase">Correo</p>
+                <p class="mt-1 font-semibold whitespace-nowrap">recursos.humanos@udlap.mx</p>
+            </a>
+            <a href="@Rutas.Ventanilla" class="rounded-2xl bg-orange-50 p-4 text-neutral-800 hover:text-neutral-800">
+                <p class="text-xs font-semibold tracking-wide text-udlap-naranja uppercase">Ventanilla Única</p>
+                <p class="mt-1 font-semibold">Edificio 19</p>
+            </a>
+            <a href="@Rutas.Horarios" class="rounded-2xl bg-orange-50 p-4 text-neutral-800 hover:text-neutral-800">
+                <p class="text-xs font-semibold tracking-wide text-udlap-naranja uppercase">Horario de atención</p>
+                <p class="mt-1 font-semibold">Lunes a viernes</p>
+                <p class="mt-1 text-sm text-neutral-600">8:30 a 12:30 y 15:00 a 16:30</p>
+            </a>
+        </div>
+    </div>
+
+    <h2 class="mt-12 text-xl font-semibold text-neutral-900">Directorio de áreas</h2>
+    <label class="sr-only" for="directorio-busqueda">Buscar contacto</label>
+    <input id="directorio-busqueda" type="search" placeholder="Buscar por nombre, puesto, extensión o correo..." class="mt-4 w-full max-w-3xl rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-800 placeholder:text-neutral-400 focus:border-udlap-naranja focus:bg-white focus:ring-1 focus:ring-udlap-naranja focus:outline-none" />
+    <p id="directorio-vacio" class="mt-6 hidden text-sm text-neutral-500">No hay coincidencias en el directorio de contacto.</p>
+    <div id="directorio-listado" class="mt-6 space-y-10">
+        @foreach (var area in Model.Areas)
+        {
+            <section class="directorio-area" aria-labelledby="@area.Nombre.Replace(" ", "-")">
+                <h2 id="@area.Nombre.Replace(" ", "-")" class="text-xl font-semibold text-neutral-900">@area.Nombre</h2>
+                <div class="mt-4 overflow-x-auto rounded-2xl border border-neutral-100">
+                    <table class="min-w-full text-left text-sm">
+                        <thead class="bg-neutral-50 text-neutral-500">
+                            <tr>
+                                <th class="px-4 py-3 font-medium">Nombre</th>
+                                <th class="px-4 py-3 font-medium">Puesto</th>
+                                <th class="px-4 py-3 font-medium">Ext.</th>
+                                <th class="px-4 py-3 font-medium">Correo</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-neutral-100">
+                            @foreach (var persona in area.Contactos)
+                            {
+                                <tr class="directorio-fila" data-busqueda="@persona.Nombre @persona.Puesto @persona.Extension @persona.Correo">
+                                    <td class="px-4 py-3 font-medium text-neutral-900">@persona.Nombre</td>
+                                    <td class="px-4 py-3 text-neutral-600">@persona.Puesto</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-neutral-800">@persona.Extension</td>
+                                    <td class="px-4 py-3">
+                                        <a class="break-all" href="mailto:@persona.Correo">@persona.Correo</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        }
+    </div>
+</article>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const campo = document.getElementById("directorio-busqueda");
+            const vacio = document.getElementById("directorio-vacio");
+            const areas = document.querySelectorAll(".directorio-area");
+
+            campo?.addEventListener("input", () => {
+                const q = campo.value.trim().toLowerCase();
+                let visibles = 0;
+
+                areas.forEach((area) => {
+                    const filas = area.querySelectorAll(".directorio-fila");
+                    let areaVisible = 0;
+                    filas.forEach((fila) => {
+                        const coincide = !q || (fila.getAttribute("data-busqueda") || "").toLowerCase().includes(q);
+                        fila.classList.toggle("hidden", !coincide);
+                        if (coincide) {
+                            areaVisible += 1;
+                            visibles += 1;
+                        }
+                    });
+                    area.classList.toggle("hidden", areaVisible === 0);
+                });
+
+                vacio?.classList.toggle("hidden", visibles > 0);
+            });
+        });
+    </script>
+}

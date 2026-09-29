@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@source "../../Views/**/*.cshtml";
+@source "../js/**/*.js";
+
+@theme {
+  --color-udlap-naranja: #ee7402;
+  --color-udlap-naranja-oscuro: #c45f02;
+  --color-udlap-verde: #008888;
+  --color-udlap-verde-oscuro: #006666;
+  --color-udlap-ambar: #f28b12;
+  --color-udlap-turquesa: #00a5a4;
+  --color-udlap-morado: #892283;
+  --color-udlap-oliva: #c0bd04;
+  --color-udlap-rojo: #e34432;
+  --color-udlap-amarillo: #ffed00;
+}
+
+@layer base {
+  html {
+    @apply min-h-full text-sm md:text-base;
+  }
+
+  body {
+    @apply min-h-screen bg-white text-neutral-800 antialiased;
+  }
+
+  a {
+    @apply text-udlap-naranja hover:text-udlap-naranja-oscuro;
+  }
+}
+
+@layer components {
+  .input-validation-error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500;
+  }
+
+  .field-validation-error {
+    @apply text-sm text-red-600;
+  }
+
+  .validation-summary-errors {
+    @apply mb-4 rounded-md border border-red-200 bg-red-50 p-3 text-red-700;
+  }
+
+  .validation-summary-errors ul {
+    @apply list-disc pl-5;
+  }
+}

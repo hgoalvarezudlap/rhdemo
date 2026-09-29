@@ -1,0 +1,40 @@
+@using RecursosHumanos.Models
+@{
+    ViewData["Title"] = "Accesos a sistemas";
+}
+
+<article class="px-6 py-10 lg:px-10">
+    @await Html.PartialAsync("_EncabezadoPagina", new EncabezadoPagina
+    {
+        Titulo = "Accesos a sistemas",
+        Intro = "Enlaces a las plataformas institucionales relacionadas con personal.",
+        Migas = [new("Inicio", Rutas.Inicio), new("Accesos a sistemas", null)],
+    })
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <a href="@Rutas.Sistemas" class="rounded-2xl bg-neutral-50 p-5 text-neutral-800 hover:bg-neutral-100 hover:text-neutral-800">
+            <h2 class="font-semibold">Sistemas de Recursos Humanos</h2>
+            <p class="mt-2 text-sm text-neutral-600">Listado de plataformas de personal.</p>
+        </a>
+        <a href="@Rutas.Recibos" class="rounded-2xl bg-neutral-50 p-5 text-neutral-800 hover:bg-neutral-100 hover:text-neutral-800">
+            <h2 class="font-semibold">Nómina y recibos</h2>
+            <p class="mt-2 text-sm text-neutral-600">Consulta de comprobantes de pago.</p>
+        </a>
+        <a href="@Rutas.Vacaciones" class="rounded-2xl bg-neutral-50 p-5 text-neutral-800 hover:bg-neutral-100 hover:text-neutral-800">
+            <h2 class="font-semibold">Vacaciones y permisos</h2>
+            <p class="mt-2 text-sm text-neutral-600">Registro de solicitudes de ausencia.</p>
+        </a>
+        <a href="@Rutas.Constancias" class="rounded-2xl bg-neutral-50 p-5 text-neutral-800 hover:bg-neutral-100 hover:text-neutral-800">
+            <h2 class="font-semibold">Constancias</h2>
+            <p class="mt-2 text-sm text-neutral-600">Emisión de documentos laborales.</p>
+        </a>
+        <a href="@Rutas.Contacto" class="rounded-2xl bg-neutral-50 p-5 text-neutral-800 hover:bg-neutral-100 hover:text-neutral-800">
+            <h2 class="font-semibold">Contacto</h2>
+            <p class="mt-2 text-sm text-neutral-600">Extensiones y contactos.</p>
+        </a>
+        <a href="@Rutas.Formatos" class="rounded-2xl bg-neutral-50 p-5 text-neutral-800 hover:bg-neutral-100 hover:text-neutral-800">
+            <h2 class="font-semibold">Formatos</h2>
+            <p class="mt-2 text-sm text-neutral-600">Plantillas oficiales de RH.</p>
+        </a>
+    </div>
+</article>

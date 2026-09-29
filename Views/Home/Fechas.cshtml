@@ -1,0 +1,41 @@
+@using RecursosHumanos.Models
+@{
+    ViewData["Title"] = "Fechas importantes";
+}
+
+<article class="px-6 py-10 lg:px-10">
+    @await Html.PartialAsync("_EncabezadoPagina", new EncabezadoPagina
+    {
+        Titulo = "Fechas importantes",
+        Intro = "Calendario de cierres, convocatorias y periodos de captura de Recursos Humanos.",
+        Migas = [new("Inicio", Rutas.Inicio), new("Fechas importantes", null)],
+    })
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-2">
+        <article class="rounded-2xl bg-neutral-50 p-5">
+            <p class="text-3xl font-semibold text-neutral-900">25 <span class="text-base font-medium text-udlap-naranja">SEP</span></p>
+            <h2 class="mt-3 font-semibold text-neutral-900">Periodo de solicitud de vacaciones</h2>
+            <p class="mt-2 text-sm text-neutral-600">Apertura del periodo de vacaciones de fin de año.</p>
+            <a href="@Rutas.Vacaciones" class="mt-3 inline-block text-sm font-medium text-udlap-naranja hover:underline">Ver vacaciones →</a>
+        </article>
+        <article class="rounded-2xl bg-neutral-50 p-5">
+            <p class="text-3xl font-semibold text-neutral-900">15 <span class="text-base font-medium text-udlap-naranja">OCT</span></p>
+            <h2 class="mt-3 font-semibold text-neutral-900">Inscripción a cursos de capacitación</h2>
+            <p class="mt-2 text-sm text-neutral-600">Inicio del periodo de inscripción.</p>
+            <a href="@Rutas.Capacitacion" class="mt-3 inline-block text-sm font-medium text-udlap-naranja hover:underline">Ver capacitación →</a>
+        </article>
+        <article class="rounded-2xl bg-neutral-50 p-5">
+            <p class="text-3xl font-semibold text-neutral-900">30 <span class="text-base font-medium text-udlap-naranja">OCT</span></p>
+            <h2 class="mt-3 font-semibold text-neutral-900">Límite de apoyos financieros</h2>
+            <p class="mt-2 text-sm text-neutral-600">Entrega de solicitudes de apoyo para dependientes económicos.</p>
+            <a href="@Rutas.Apoyos" class="mt-3 inline-block text-sm font-medium text-udlap-naranja hover:underline">Ver apoyos →</a>
+        </article>
+        <article class="rounded-2xl bg-neutral-50 p-5">
+            <p class="text-3xl font-semibold text-neutral-900">31 <span class="text-base font-medium text-udlap-naranja">OCT</span></p>
+            <h2 class="mt-3 font-semibold text-neutral-900">Comprobantes de fondo de ahorro</h2>
+            <p class="mt-2 text-sm text-neutral-600">Fecha límite de registro de comprobantes.</p>
+            <a href="@Rutas.FondoAhorro" class="mt-3 inline-block text-sm font-medium text-udlap-naranja hover:underline">Ver fondo de ahorro →</a>
+        </article>
+    </div>
+    <p class="mt-8 text-sm text-neutral-500">Consulta también la sección de <a href="@Rutas.Calendarios">calendarios</a> en Recursos.</p>
+</article>

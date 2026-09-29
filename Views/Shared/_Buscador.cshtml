@@ -1,0 +1,12 @@
+@model BuscadorFormulario
+
+<form action="@Rutas.Buscar" method="get" role="search" class="js-buscador@(string.IsNullOrWhiteSpace(Model.FormClass) ? "" : $" {Model.FormClass}")" data-buscador autocomplete="off">
+    <label class="sr-only" for="@Model.InputId">Buscar en Recursos Humanos</label>
+    <div class="relative">
+        <svg class="pointer-events-none absolute top-1/2 @Model.IconClass -translate-y-1/2 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" />
+        </svg>
+        <input id="@Model.InputId" type="search" name="q" value="@Model.Valor" placeholder="@Model.Placeholder" autocomplete="off" class="js-buscador-input @Model.InputClass" aria-autocomplete="list" aria-controls="@Model.InputId-sugerencias" />
+        <ul id="@Model.InputId-sugerencias" class="js-buscador-sugerencias absolute z-50 mt-1 hidden max-h-80 w-full overflow-auto rounded-xl border border-neutral-200 bg-white py-1 shadow-lg" role="listbox"></ul>
+    </div>
+</form>

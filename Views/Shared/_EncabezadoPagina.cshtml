@@ -1,0 +1,22 @@
+@model EncabezadoPagina
+
+<nav class="mb-6 text-sm text-neutral-500" aria-label="Migas de pan">
+    @for (var i = 0; i < Model.Migas.Count; i++)
+    {
+        var miga = Model.Migas[i];
+        if (i > 0)
+        {
+            <span class="mx-2 text-neutral-300">/</span>
+        }
+        if (!string.IsNullOrEmpty(miga.Url))
+        {
+            <a class="hover:text-udlap-naranja" href="@miga.Url">@miga.Texto</a>
+        }
+        else
+        {
+            <span class="text-neutral-800">@miga.Texto</span>
+        }
+    }
+</nav>
+<h1 class="text-4xl font-semibold tracking-tight text-neutral-900">@Model.Titulo</h1>
+<p class="mt-4 max-w-3xl text-neutral-600">@Model.Intro</p>

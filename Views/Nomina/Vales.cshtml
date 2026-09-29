@@ -1,0 +1,39 @@
+@model EncabezadoPagina
+@{
+    ViewData["Title"] = Model.Titulo;
+}
+
+<article class="px-6 py-10 lg:px-10">
+    @await Html.PartialAsync("_EncabezadoPagina", Model)
+
+    <div class="mt-10 max-w-3xl space-y-10">
+        <section>
+            <h2 class="text-xl font-semibold text-neutral-900">¿Qué artículos se pueden comprar?</h2>
+            <p class="mt-3 text-neutral-600">Se pueden adquirir artículos de consumo que permitan el mejoramiento de la calidad de vida del empleado y su familia. Los vales de despensa no pueden usarse para adquirir bebidas alcohólicas o productos derivados del tabaco y no pueden ser canjeados por dinero o utilizados para retirar el importe de su saldo en efectivo.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold text-neutral-900">¿En qué comercios puedo utilizar el monedero electrónico?</h2>
+            <p class="mt-3 text-neutral-600">Sólo pueden usarse en comercios del territorio nacional. Para consultar la lista de comercios más cercanos, ingresa en <a href="https://www.edenred.mx/usuarios" target="_blank" rel="noopener noreferrer">edenred.mx/usuarios</a>.</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold text-neutral-900">¿Qué debo hacer en caso de robo o extravío?</h2>
+            <p class="mt-3 text-neutral-600">Deberá acudir a la Dirección General de Recursos Humanos y también reportarlo a Edenred a través de los siguientes medios:</p>
+            <div class="mt-6 grid gap-4 sm:grid-cols-3">
+                <a href="tel:018000700306" class="rounded-2xl bg-orange-50 p-4 text-neutral-800 hover:text-neutral-800">
+                    <p class="text-xs font-semibold tracking-wide text-udlap-naranja uppercase">Teléfono</p>
+                    <p class="mt-1 font-semibold whitespace-nowrap">01 800 070 03 06</p>
+                </a>
+                <div class="rounded-2xl bg-orange-50 p-4 text-neutral-800">
+                    <p class="text-xs font-semibold tracking-wide text-udlap-naranja uppercase">Mensaje de texto</p>
+                    <p class="mt-1 text-sm text-neutral-600">Envía la palabra <span class="font-semibold text-neutral-800">CANCELA</span>, un espacio y los 16 dígitos de tu tarjeta al <span class="font-semibold text-neutral-800">22267</span>.</p>
+                </div>
+                <a href="https://www.edenred.com.mx/usuarios" target="_blank" rel="noopener noreferrer" class="rounded-2xl bg-orange-50 p-4 text-neutral-800 hover:text-neutral-800">
+                    <p class="text-xs font-semibold tracking-wide text-udlap-naranja uppercase">Portal de usuarios</p>
+                    <p class="mt-1 font-semibold break-all">edenred.com.mx/usuarios</p>
+                </a>
+            </div>
+        </section>
+    </div>
+</article>

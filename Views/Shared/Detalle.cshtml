@@ -1,0 +1,19 @@
+@model PaginaDetalleViewModel
+@{
+    ViewData["Title"] = Model.Titulo;
+}
+
+<article class="px-6 py-10 lg:px-10">
+    @await Html.PartialAsync("_EncabezadoPagina", new EncabezadoPagina { Titulo = Model.Titulo, Intro = Model.Intro, Migas = Model.Migas })
+
+    @if (Model.Parrafos.Count > 0)
+    {
+        <div class="mt-8 max-w-3xl space-y-4 text-neutral-600">
+            @foreach (var parrafo in Model.Parrafos)
+            {
+                <p>@parrafo</p>
+            }
+            <p class="text-sm text-neutral-500">El contenido operativo, requisitos y ligas a sistemas se irán publicando en esta página.</p>
+        </div>
+    }
+</article>
